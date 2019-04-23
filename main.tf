@@ -164,7 +164,9 @@ resource "vsphere_virtual_machine" "aci_vm3" {
 
   folder = "${var.folder}"
   network_interface {
-    network_id   = "${data.vsphere_network.vm1_net.id}"
+    network_id   = "${data.vsphere_network.vm3_net.id}"
+    # In order to migrate one EPG to another VM, you must change the network_id to the VM you want to migrate this EPG to.
+    # network_id   = "${data.vsphere_network.vm1_net.id}"
     adapter_type = "${data.vsphere_virtual_machine.template2.network_interface_types[0]}"
   }
 
